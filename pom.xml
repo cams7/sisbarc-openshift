@@ -1,50 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>sisbarc</groupId>
-    <artifactId>sisbarc</artifactId>
-    <packaging>war</packaging>
-    <version>1.0</version>
-    <name>sisbarc</name>
-  
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-    
-    <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+	<groupId>br.com.cams7</groupId>
+	<artifactId>sisbarc</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+	<name>sisbarc</name>
 
-<profiles>
-    <profile>
-     <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
-     <!-- Use this profile for any OpenShift specific customization your app will need. -->
-     <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
-     <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
-     <id>openshift</id>
-     <build>
-        <finalName>sisbarc</finalName>
-        <plugins>
-          <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <outputDirectory>deployments</outputDirectory>
-              		  <warName>ROOT</warName>
-                </configuration>
-            </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<version.war.plugin>2.5</version.war.plugin>
+
+		<version.jboss.bom>8.0.0.Final</version.jboss.bom>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>primefaces-repository</id>
+			<name>Primefaces repository</name>
+			<url>http://repository.primefaces.org</url>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>jboss-javaee-7.0-with-tools</artifactId>
+				<version>${version.jboss.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>jboss-javaee-7.0-with-hibernate</artifactId>
+				<version>${version.jboss.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>		
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.faces</groupId>
+			<artifactId>jboss-jsf-api_2.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.1</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>openshift</id>
+			<build>
+				<finalName>appwildfly</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>${version.war.plugin}</version>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+							<outputDirectory>deployments</outputDirectory>
+							<warName>ROOT</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
