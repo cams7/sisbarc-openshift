@@ -1,123 +1,43 @@
-<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.cams7.sisbarc</groupId>
-	<artifactId>paas</artifactId>
+  	<groupId>br.com.cams7</groupId>
+	<artifactId>openshift</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	
+	<name>Openshift (Wildfly)</name>
+	<description></description>
 
-	<name>Sistema Embarcado - Openshift (WildFly)</name>
-	<description>Sistema Embarcado - Openshift (WildFly)</description>
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>acende_apaga_leds-jpa</module>
-		<module>acende_apaga_leds-ejb</module>
-		<module>acende_apaga_leds-web</module>
-		<module>ear</module>
-	</modules>
+  	<url>https://github.com/cams7/sisbarc-openshift</url>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<distribution>repo</distribution>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+		</license>
+	</licenses>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-
-		<version.jboss.bom>8.0.0.Final</version.jboss.bom>
-
-		<version.compiler.plugin>3.2</version.compiler.plugin>
-
-		<version.ear.plugin>2.9.1</version.ear.plugin>
-		<version.ejb.plugin>2.4</version.ejb.plugin>
-		<version.war.plugin>2.5</version.war.plugin>
+		<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
+			
+		<user.name>Cesar Magalhaes</user.name>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>primefaces-repository</id>
-			<name>Primefaces repository</name>
-			<url>http://repository.primefaces.org</url>
-		</repository>
-	</repositories>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.wildfly.bom</groupId>
-				<artifactId>jboss-javaee-7.0-with-tools</artifactId>
-				<version>${version.jboss.bom}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.wildfly.bom</groupId>
-				<artifactId>jboss-javaee-7.0-with-hibernate</artifactId>
-				<version>${version.jboss.bom}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			
-			<dependency>
-				<groupId>br.com.cams7.sisbarc</groupId>
-				<artifactId>acende_apaga_leds-jpa</artifactId>
-				<version>${project.version}</version>
-				<type>jar</type>
-			</dependency>
-
-			<dependency>
-				<groupId>br.com.cams7.sisbarc</groupId>
-				<artifactId>acende_apaga_leds-ejb</artifactId>
-				<version>${project.version}</version>
-				<type>ejb</type>
-			</dependency>
-
-			<dependency>
-				<groupId>br.com.cams7.sisbarc</groupId>
-				<artifactId>acende_apaga_leds-web</artifactId>
-				<version>${project.version}</version>
-				<type>war</type>
-				<scope>compile</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>org.primefaces</groupId>
-				<artifactId>primefaces</artifactId>
-				<version>5.1</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+	<modules>
+		<module>maven-projects</module>
+	</modules>
 
 	<scm>
 		<connection>scm:git:https://github.com/cams7/sisbarc-openshift.git</connection>
 	</scm>
-
+	
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.compiler.plugin}</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-ear-plugin</artifactId>
-				<version>${version.ear.plugin}</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-ejb-plugin</artifactId>
-				<version>${version.ejb.plugin}</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${version.war.plugin}</version>
-			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
@@ -130,29 +50,15 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-				</configuration>
-			</plugin>
-		</plugins>
+			</plugin>					
+		</plugins>			
 	</build>
-
+	
 	<profiles>
 		<profile>
 			<id>openshift</id>
 			<build>
-				<finalName>sisbarc</finalName>
-				<!--plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
-					<version>${version.war.plugin}</version> <configuration> <failOnMissingWebXml>false</failOnMissingWebXml> 
-					<outputDirectory>deployments</outputDirectory> <warName>ROOT</warName> </configuration> 
-					</plugin> </plugins -->
+				<finalName>${project.artifactId}</finalName>				
 				<pluginManagement>
 					<plugins>
 						<plugin>
