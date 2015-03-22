@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import br.com.yaw.prime.jpa.domain.entity.MercadoriaEntity;
@@ -35,6 +36,7 @@ import br.com.yaw.prime.service.MercadoriaService;
  */
 @ManagedBean(name = "mercadoriaMB")
 @ViewScoped
+// @SessionScoped
 public class MercadoriaView implements Serializable {
 
 	private static final long serialVersionUID = 1L;
