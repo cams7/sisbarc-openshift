@@ -1,4 +1,4 @@
-package br.com.yaw.prime.service;
+package br.com.cams7.sisbarc.aal.ejb.service;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import br.com.yaw.prime.jpa.domain.entity.AbstractEntity;
+import br.com.cams7.sisbarc.aal.jpa.domain.entity.AbstractEntity;
 
 /**
  * Classe resolve os métodos básicos de cadastro (CRUD) com API da

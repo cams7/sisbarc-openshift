@@ -1,10 +1,10 @@
-package br.com.yaw.prime.service;
+package br.com.cams7.sisbarc.aal.ejb.service;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.com.yaw.prime.jpa.domain.entity.MercadoriaEntity;
+import br.com.cams7.sisbarc.aal.jpa.domain.entity.MercadoriaEntity;
 
 /**
  * Componente EJB que define as operações de negócio da entidade

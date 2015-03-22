@@ -1,4 +1,4 @@
-package br.com.yaw.prime.jpa.domain.entity;
+package br.com.cams7.sisbarc.aal.jpa.domain.entity;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ import java.io.Serializable;
  * de persistência: <code>AbstractPersistence</code>.
  * </p>
  * 
- * @see br.com.yaw.prime.service.BaseServiceImpl
+ * @see br.com.cams7.sisbarc.aal.ejb.service.BaseServiceImpl
  * 
  * @author YaW Tecnologia
  */

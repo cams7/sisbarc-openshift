@@ -18,6 +18,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>br.com.cams7.sisbarc</groupId>
+			<artifactId>acende_apaga_leds-jpa</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>br.com.cams7.sisbarc</groupId>
 			<artifactId>acende_apaga_leds-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
@@ -44,6 +49,12 @@
 					<version>6</version>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
+						<jarModule>
+							<groupId>br.com.cams7.sisbarc</groupId>
+							<artifactId>acende_apaga_leds-jpa</artifactId>
+							<bundleDir>/</bundleDir>
+							<includeInApplicationXml>true</includeInApplicationXml>
+						</jarModule>
 						<ejbModule>
 							<groupId>br.com.cams7.sisbarc</groupId>
 							<artifactId>acende_apaga_leds-ejb</artifactId>

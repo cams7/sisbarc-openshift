@@ -1,4 +1,4 @@
-package br.com.yaw.prime.view;
+package br.com.cams7.sisbarc.aal.view;
 
 import static javax.faces.context.FacesContext.getCurrentInstance;
 
@@ -9,11 +9,10 @@ import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
-import br.com.yaw.prime.jpa.domain.entity.MercadoriaEntity;
-import br.com.yaw.prime.service.MercadoriaService;
+import br.com.cams7.sisbarc.aal.ejb.service.MercadoriaService;
+import br.com.cams7.sisbarc.aal.jpa.domain.entity.MercadoriaEntity;
 
 /**
  * Componente responsável por integrar o front-end (páginas JSF) c/ camada de

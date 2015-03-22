@@ -12,6 +12,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>acende_apaga_leds-jpa</module>
 		<module>acende_apaga_leds-ejb</module>
 		<module>acende_apaga_leds-web</module>
 		<module>ear</module>
@@ -54,6 +55,13 @@
 				<version>${version.jboss.bom}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>br.com.cams7.sisbarc</groupId>
+				<artifactId>acende_apaga_leds-jpa</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
 			</dependency>
 
 			<dependency>

@@ -1,4 +1,4 @@
-package br.com.yaw.prime.jpa.domain.entity;
+package br.com.cams7.sisbarc.aal.jpa.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
