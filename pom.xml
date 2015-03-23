@@ -3,14 +3,14 @@
   	<modelVersion>4.0.0</modelVersion>
 
   	<groupId>br.com.cams7</groupId>
-	<artifactId>sisbarc</artifactId>
+	<artifactId>apps</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
-	<name>Sistema Embarcado</name>
-	<description>Aplicação que ultiliza as tecnologias Arduino, Java EE e Android. O objetivo dessa aplicação e a introdução a Automação Residencial</description>
-
-  	<url>https://github.com/cams7/sisbarc-openshift</url>
+	<name>Aplicacoes (CAMs7)</name>
+	<description></description>
+	
+	<url>https://github.com/cams7/sisbarc-openshift</url>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -22,38 +22,22 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
-		
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	
-		<version.compiler.plugin>3.2</version.compiler.plugin>
-		
+				
 		<version.ear.plugin>2.9.1</version.ear.plugin>
 				
 		<user.name>Cesar Magalhaes</user.name>
 	</properties>
 
 	<modules>
-		<module>java</module>
-		<!--module>mobile</module-->
+		<module>maven-projects</module>
 	</modules>
-
+	
 	<scm>
 		<connection>scm:git:https://github.com/cams7/sisbarc-openshift.git</connection>
 	</scm>
 	
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.compiler.plugin}</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-				</configuration>
-			</plugin>
-			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
@@ -66,15 +50,14 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>						
+			</plugin>
 		</plugins>			
 	</build>
-	
+		
 	<profiles>
 		<profile>
 			<id>openshift</id>
-			<build>
-				<!--finalName>sisbarc</finalName-->				
+			<build>			
 				<pluginManagement>
 					<plugins>
 						<plugin>
