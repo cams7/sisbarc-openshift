@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -9,11 +9,11 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>acende_apaga_leds-ejb</artifactId>
-	<name>Acende Apaga LEDs - EJB</name>
-	<description>Modulo EJB do 'Acende Apaga LEDs'</description>
-
-	<packaging>ejb</packaging>
+	<artifactId>acende_apaga_leds-web</artifactId>
+	<packaging>war</packaging>
+	
+	<name>Acende Apaga LEDs - WEB</name>
+	<description>Modulo WEB do 'Acende Apaga LEDs'</description>	
 
 	<properties>
 	</properties>
@@ -25,16 +25,27 @@
 			<scope>provided</scope>
 			<type>jar</type>
 		</dependency>
-
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<groupId>br.com.cams7.sisbarc</groupId>
+			<artifactId>acende_apaga_leds-ejb</artifactId>
 			<scope>provided</scope>
+			<type>ejb</type>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.spec.javax.ejb</groupId>
 			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.faces</groupId>
+			<artifactId>jboss-jsf-api_2.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -43,13 +54,11 @@
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
-				<artifactId>maven-ejb-plugin</artifactId>
+				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<ejbVersion>3.1</ejbVersion>
-					<generateClient>false</generateClient>
+					<failOnMissingWebXml>true</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 </project>
-
