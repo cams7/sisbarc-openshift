@@ -22,7 +22,7 @@ git pull
 git remote add github https://github.com/cams7/sisbarc-openshift.git
 
 #Dentro do diretorio 'sisbarc'. Para fazer o push no github, execute o comando:
-	
+git push github master	
 
 #Dentro do diretorio 'sisbarc'. Para fazer o pull do github, execute o comando:
 git pull github master

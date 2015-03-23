@@ -7,11 +7,11 @@
 		<groupId>br.com.cams7.sisbarc</groupId>
 		<artifactId>java</artifactId>
 		<version>1.0-SNAPSHOT</version>
-	</parent>	
+	</parent>
 
 	<artifactId>acende_apaga_leds-jpa</artifactId>
 	<packaging>jar</packaging>
-	
+
 	<name>Entidades do sistema 'Acende Apaga LEDs'</name>
 	<description>Todas entidades mapeadas do 'Acende Apaga LEDs' estão nesse modulo</description>
 
@@ -25,14 +25,27 @@
 			<scope>provided</scope>
 			<type>jar</type>
 		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<!--finalName>${project.artifactId}-${project.version}</finalName-->
+		<!--finalName>${project.artifactId}-${project.version}</finalName -->
 	</build>
 </project>

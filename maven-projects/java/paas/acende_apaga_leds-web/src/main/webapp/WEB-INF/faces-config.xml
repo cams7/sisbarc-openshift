@@ -7,10 +7,13 @@
 		<!-- configuracoes do locale (i18n) -->
 		<locale-config>
 			<default-locale>pt_BR</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>pt_BR</supported-locale>
 		</locale-config>
 
 		<resource-bundle>
 			<base-name>messages_labels</base-name>
+			<!-- base-name>messages</base-name -->
 			<var>msg</var>
 		</resource-bundle>
 	</application>

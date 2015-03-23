@@ -27,7 +27,7 @@ public class MercadoriaServiceImpl extends
 	/**
 	 * O container injeta a referência para o <code>EntityManager</code>.
 	 */
-	@PersistenceContext(unitName = "appPrimeUnit")
+	@PersistenceContext(unitName = "acendeApagaLEDsUnit")
 	private EntityManager em;
 
 	public MercadoriaServiceImpl() {

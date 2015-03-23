@@ -11,9 +11,9 @@
 
 	<artifactId>acende_apaga_leds-web</artifactId>
 	<packaging>war</packaging>
-	
+
 	<name>Acende Apaga LEDs - WEB</name>
-	<description>Modulo WEB do 'Acende Apaga LEDs'</description>	
+	<description>Modulo WEB do 'Acende Apaga LEDs'</description>
 
 	<properties>
 	</properties>
@@ -31,7 +31,7 @@
 			<scope>provided</scope>
 			<type>jar</type>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>br.com.cams7.sisbarc</groupId>
 			<artifactId>acende_apaga_leds-jpa</artifactId>
@@ -43,6 +43,23 @@
 			<artifactId>acende_apaga_leds-ejb</artifactId>
 			<scope>provided</scope>
 			<type>ejb</type>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -61,10 +78,22 @@
 			<artifactId>primefaces</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.json</groupId>
+			<artifactId>jboss-json-api_1.0_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>jaxrs-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<!--finalName>${project.artifactId}-${project.version}</finalName-->
+		<!--finalName>${project.artifactId}-${project.version}</finalName -->
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>

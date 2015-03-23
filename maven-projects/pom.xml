@@ -14,37 +14,40 @@
 	<name>Sistema Embarcado</name>
 	<description>Aplicação que ultiliza as tecnologias Arduino, Java EE e Android. O objetivo dessa aplicação e a introdução a Automação Residencial</description>
 	
-	<properties>	
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	
-		<version.compiler.plugin>3.2</version.compiler.plugin>
+	<properties>			
 	</properties>
 
-	<modules>
-		<module>java</module>		
-	</modules>
-		
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.compiler.plugin}</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-				</configuration>
-			</plugin>				
-		</plugins>			
-	</build>
-
-	<profiles>
+	<profiles>		
 		<profile>
-			<id>default</id>			
+			<id>openshift</id>	
 			<modules>
+				<module>java</module>		
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>			
+			<modules>
+				<module>java</module>
 				<module>mobile</module>
 			</modules>
-		</profile>		
+		</profile>	
+		
+		<profile>
+			<id>arq-wildfly-managed</id>	
+			<modules>
+				<module>java</module>		
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>arq-wildfly-remote</id>	
+			<modules>
+				<module>java</module>		
+			</modules>
+		</profile>
 	</profiles>
 </project>

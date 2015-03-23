@@ -15,9 +15,7 @@
 	<name>Sistema Embarcado - WildFly</name>
 	<description>Sistema Embarcado - WildFly</description>
 		
-	<properties>		
-		<version.primefaces>5.1</version.primefaces>
-		
+	<properties>				
 		<version.ejb.plugin>2.4</version.ejb.plugin>
 		<version.war.plugin>2.5</version.war.plugin>		
 	</properties>
@@ -64,8 +62,8 @@
 			<dependency>
 				<groupId>org.primefaces</groupId>
 				<artifactId>primefaces</artifactId>
-				<version>${version.primefaces}</version>
-			</dependency>
+				<version>5.1</version>
+			</dependency>			
 		</dependencies>
 	</dependencyManagement>
 
