@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.cams7.jpa.domain.BaseEntity;
+
 /**
  * Classe de modelo que representa uma mercadoria. A mercadoria é um objeto
  * persistido, por isso utilizamos o nome entidade.
@@ -24,7 +26,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "mercadoria")
-public class MercadoriaEntity implements AbstractEntity {
+public class MercadoriaEntity extends BaseEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +42,24 @@ public class MercadoriaEntity implements AbstractEntity {
 
 	private Double preco;
 
+	public MercadoriaEntity() {
+		super();
+	}
+
+	public MercadoriaEntity(Long id) {
+		super(id);
+	}
+
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -54,10 +74,6 @@ public class MercadoriaEntity implements AbstractEntity {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	public Double getPreco() {

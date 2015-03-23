@@ -15,10 +15,15 @@
 	<name>Sistema Embarcado - EAR</name>
 	<description>Modulo EAR do SisBarc</description>
 
-	<dependencies>
+	<dependencies>	
 		<dependency>
 			<groupId>br.com.cams7</groupId>
 			<artifactId>app-base</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>br.com.cams7</groupId>
+			<artifactId>as-base</artifactId>
 			<type>jar</type>
 		</dependency>
 		

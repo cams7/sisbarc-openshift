@@ -1,9 +1,11 @@
 package br.com.cams7.sisbarc.aal.ejb.service;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import br.com.cams7.as.service.BaseServiceImpl;
 import br.com.cams7.sisbarc.aal.jpa.domain.entity.MercadoriaEntity;
 
 /**
@@ -18,8 +20,9 @@ import br.com.cams7.sisbarc.aal.jpa.domain.entity.MercadoriaEntity;
  * @author YaW Tecnologia
  */
 @Stateless
-public class MercadoriaServiceImpl extends BaseServiceImpl<MercadoriaEntity, Long>
-		implements MercadoriaService {
+@Local(MercadoriaService.class)
+public class MercadoriaServiceImpl extends
+		BaseServiceImpl<MercadoriaEntity, Long> implements MercadoriaService {
 
 	/**
 	 * O container injeta a referência para o <code>EntityManager</code>.
@@ -27,13 +30,13 @@ public class MercadoriaServiceImpl extends BaseServiceImpl<MercadoriaEntity, Lon
 	@PersistenceContext(unitName = "appPrimeUnit")
 	private EntityManager em;
 
+	public MercadoriaServiceImpl() {
+		super();
+	}
+
 	@Override
 	protected EntityManager getEntityManager() {
 		return em;
-	}
-
-	public MercadoriaServiceImpl() {
-		super(MercadoriaEntity.class);
 	}
 
 }

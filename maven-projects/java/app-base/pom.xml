@@ -11,7 +11,7 @@
 	<groupId>br.com.cams7</groupId>
 	<artifactId>app-base</artifactId>
 	
-	<name>Aplicacao - base</name>
+	<name>App - base</name>
 	<description>LIB comum as aplicacoes</description>
 
 	<packaging>jar</packaging>
@@ -23,7 +23,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<!--finalName>${project.artifactId}-${project.version}</finalName-->
 	</build>
 </project>
 

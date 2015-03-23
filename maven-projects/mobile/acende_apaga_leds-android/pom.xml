@@ -15,6 +15,6 @@
 	<name>Acende Apaga LEDs - Android</name>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<!--finalName>${project.artifactId}-${project.version}</finalName-->
 	</build>
 </project>

@@ -16,8 +16,10 @@
 	<description>Sistema Embarcado - WildFly</description>
 		
 	<properties>		
+		<version.primefaces>5.1</version.primefaces>
+		
 		<version.ejb.plugin>2.4</version.ejb.plugin>
-		<version.war.plugin>2.5</version.war.plugin>
+		<version.war.plugin>2.5</version.war.plugin>		
 	</properties>
 
 	<repositories>
@@ -28,7 +30,8 @@
 		</repository>
 	</repositories>
 	
-	<modules>		
+	<modules>	
+		<module>as-base</module>
 		<module>acende_apaga_leds-ejb</module>
 		<module>acende_apaga_leds-web</module>
 		<module>ear</module>
@@ -36,6 +39,13 @@
 
 	<dependencyManagement>
 		<dependencies>	
+			<dependency>
+				<groupId>br.com.cams7</groupId>
+				<artifactId>as-base</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			
 			<dependency>
 				<groupId>br.com.cams7.sisbarc</groupId>
 				<artifactId>acende_apaga_leds-ejb</artifactId>
@@ -54,7 +64,7 @@
 			<dependency>
 				<groupId>org.primefaces</groupId>
 				<artifactId>primefaces</artifactId>
-				<version>5.1</version>
+				<version>${version.primefaces}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

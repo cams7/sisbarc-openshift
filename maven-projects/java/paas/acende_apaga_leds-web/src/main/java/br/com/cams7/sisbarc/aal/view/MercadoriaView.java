@@ -84,7 +84,7 @@ public class MercadoriaView implements Serializable {
 		if (idSelecionado == null) {
 			return;
 		}
-		mercadoria = service.find(idSelecionado);
+		mercadoria = service.findOne(idSelecionado);
 		// log.debug("Pronto pra editar");
 	}
 
