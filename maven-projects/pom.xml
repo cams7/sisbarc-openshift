@@ -23,7 +23,7 @@
 
 	<modules>
 		<module>java</module>
-		<!--module>mobile</module-->
+		<module>mobile</module>
 	</modules>
 		
 	<build>
