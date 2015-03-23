@@ -22,8 +22,7 @@
 	</properties>
 
 	<modules>
-		<module>java</module>
-		<module>mobile</module>
+		<module>java</module>		
 	</modules>
 		
 	<build>
@@ -38,5 +37,14 @@
 				</configuration>
 			</plugin>				
 		</plugins>			
-	</build>	
+	</build>
+
+	<profiles>
+		<profile>
+			<id>default</id>			
+			<modules>
+				<module>mobile</module>
+			</modules>
+		</profile>		
+	</profiles>
 </project>
