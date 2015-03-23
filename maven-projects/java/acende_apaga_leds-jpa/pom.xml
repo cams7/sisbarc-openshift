@@ -20,6 +20,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>br.com.cams7</groupId>
+			<artifactId>app-base</artifactId>
+			<scope>provided</scope>
+			<type>jar</type>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<scope>provided</scope>
