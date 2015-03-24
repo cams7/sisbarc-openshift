@@ -17,7 +17,8 @@
 	<description>Modulo com todas as aplicacoes Java</description>
 
 	<properties>
-		<version.jboss.bom>8.0.0.Final</version.jboss.bom>		
+		<version.jboss.bom>8.0.0.Final</version.jboss.bom>	
+		<version.war.plugin>2.5</version.war.plugin>
 	</properties>
 
 	<modules>
@@ -66,6 +67,36 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix />
+						</manifest>
+						<manifestEntries>
+							<url>${pom.url}</url>
+							<Implementation-Build>${buildNumber}</Implementation-Build>
+							<Implementation-Title>${project.name}</Implementation-Title>
+							<Implementation-Vendor>N/A</Implementation-Vendor>
+							<Implementation-Version>${project.version}</Implementation-Version>
+							<Built-By>${user.name}</Built-By>
+							<Built-OS>${os.name}</Built-OS>
+							<Build-Date>${timestamp}</Build-Date>
+							<SCM>${buildNumber}</SCM>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>			
+		</plugins>
+	</build>
 	
 	<profiles>			
 		<profile>

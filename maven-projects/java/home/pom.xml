@@ -14,9 +14,6 @@
 	<name>Sistema Embarcado - Modulos Home</name>
 	<description>Aplicação que rodara no Raspberry PI B+</description>
 	
-	<properties>
-	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<!-- http://jlog.org/rxtx-lin.html -->
@@ -37,6 +34,6 @@
 
 	<modules>
 		<module>arduino-base</module>
-		<!--module>acende_apaga_leds_appweb</module-->
+		<module>acende_apaga_leds-ws</module>
 	</modules>	
 </project>

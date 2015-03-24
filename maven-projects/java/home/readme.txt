@@ -23,12 +23,12 @@ Linux
 
     /usr/share/java/, exemplo.: cp /home/Usuario/RXTXcomm.jar /usr/share/java/.
 	
+Tomcat 8:
+Altera a tag do arquivo 'server.xml', o arquivo esta localizado no diretorio 'conf' no tomcat8
+<Connector port="8181" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" address="0.0.0.0"/>
 
-For Windows VAIO:
-	cd C:\Users\cams7\desenv\github\paas\openshift\sisbarc\maven-projects\java\home\acende_apaga_leds_appweb
-	java -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=1234 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.local.only=false -Djava.rmi.server.hostname=192.168.1.7 -jar target/acende_apaga_leds_monitor.jar
+Incluir a tag no arquivo 'tomcat-users.xml', o arquivo esta localizado no diretorio 'conf' no tomcat8
+<user username="tomcat" password="tomcat" roles="tomcat,manager-gui,admin-gui,manager-script"/>
 
-	
-	service:jmx:rmi:///jndi/rmi://192.168.1.7:1234/jmxrmi
 	
 	

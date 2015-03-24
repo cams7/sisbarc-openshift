@@ -16,23 +16,66 @@
  */
 package org.jboss.as.quickstarts.ear.ejb;
 
-import javax.ejb.Stateful;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.ejb.Stateless;
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+
+import com.javacodegeeks.enterprise.ws.WebServiceImplService;
+import com.javacodegeeks.enterprise.ws.WebServiceInterface;
 
 /**
  * A simple Hello World EJB. The EJB does not use an interface.
  * 
  * @author paul.robinson@redhat.com, 2011-12-21
  */
-@Stateful
+@Stateless
 public class GreeterEJB {
-    /**
-     * This method takes a name and returns a personalised greeting.
-     * 
-     * @param name
-     *            the name of the person to be greeted
-     * @return the personalised greeting.
-     */
-    public String sayHello(String name) {
-        return "Hello " + name;
-    }
+	/**
+	 * This method takes a name and returns a personalised greeting.
+	 * 
+	 * @param name
+	 *            the name of the person to be greeted
+	 * @return the personalised greeting.
+	 */
+	public String sayHello(String name) {
+
+		WebServiceInterface serviceInterface = null;
+		QName qname = new QName("http://ws.enterprise.javacodegeeks.com/",
+				"WebServiceImplService");
+
+		switch (name.toLowerCase()) {
+		case "vaio":
+			try {
+				URL wsdlUrl = new URL(
+						"http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl");
+				Service service = Service.create(wsdlUrl, qname);
+				serviceInterface = service.getPort(WebServiceInterface.class);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			break;
+		case "vbox":
+			try {
+				URL wsdlUrl = new URL(
+						"http://192.168.1.8:8181/acende_apaga_leds/sayhello?wsdl");
+				Service service = Service.create(wsdlUrl, qname);
+				serviceInterface = service.getPort(WebServiceInterface.class);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			break;
+		default:
+			serviceInterface = (new WebServiceImplService())
+					.getWebServiceImplPort();
+			break;
+		}
+
+		if (serviceInterface == null)
+			return null;
+
+		return serviceInterface.printMessage(name);
+	}
 }

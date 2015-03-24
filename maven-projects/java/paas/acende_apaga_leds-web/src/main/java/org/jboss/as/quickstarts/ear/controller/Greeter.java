@@ -19,7 +19,7 @@ package org.jboss.as.quickstarts.ear.controller;
 import org.jboss.as.quickstarts.ear.ejb.GreeterEJB;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import java.io.Serializable;
@@ -31,7 +31,7 @@ import java.io.Serializable;
  * @author paul.robinson@redhat.com, 2011-12-21
  */
 @Named("greeter")
-@SessionScoped
+@RequestScoped
 public class Greeter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
