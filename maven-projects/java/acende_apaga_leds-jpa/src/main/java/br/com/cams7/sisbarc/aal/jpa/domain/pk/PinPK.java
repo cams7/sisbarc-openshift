@@ -11,7 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
-import br.com.cams7.sisbarc.arduino.vo.ArduinoPin.ArduinoPinType;
+import br.com.cams7.arduino.ArduinoPinType;
 
 /**
  * @author cams7

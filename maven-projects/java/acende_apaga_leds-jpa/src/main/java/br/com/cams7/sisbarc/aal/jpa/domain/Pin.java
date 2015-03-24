@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import br.com.cams7.jpa.domain.BaseEntity;
 import br.com.cams7.sisbarc.aal.jpa.domain.pk.PinPK;
-import br.com.cams7.sisbarc.arduino.vo.ArduinoPin.ArduinoPinType;
+import br.com.cams7.arduino.ArduinoPinType;
 
 @MappedSuperclass
 public abstract class Pin extends BaseEntity<PinPK> {

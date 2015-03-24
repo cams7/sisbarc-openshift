@@ -22,8 +22,7 @@
 
 	<modules>
 		<module>app-base</module>
-		<module>acende_apaga_leds-jpa</module>
-		<!--module>jmx</module-->
+		<module>acende_apaga_leds-jpa</module>		
 		<module>paas</module>
 	</modules>
 
@@ -49,19 +48,7 @@
 				<artifactId>app-base</artifactId>
 				<version>${project.version}</version>
 				<type>jar</type>
-			</dependency>
-			<!--dependency>
-				<groupId>br.com.cams7.sisbarc</groupId>
-				<artifactId>arduino-base</artifactId>
-				<version>${project.version}</version>
-				<type>jar</type>
-			</dependency>
-			<dependency>
-				<groupId>br.com.cams7.sisbarc</groupId>
-				<artifactId>acende_apaga_leds_monitor-base</artifactId>
-				<version>${project.version}</version>
-				<type>jar</type>
-			</dependency-->
+			</dependency>			
 			
 			<dependency>
 				<groupId>br.com.cams7.sisbarc</groupId>
@@ -72,20 +59,46 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>		
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.9</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>false</downloadJavadocs>
-				</configuration>
-			</plugin>			
-		</plugins>
-	</build>
+	
+	<profiles>			
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>			
+			<modules>
+				<module>home</module>
+			</modules>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-eclipse-plugin</artifactId>
+						<version>2.9</version>
+						<configuration>
+							<downloadSources>true</downloadSources>
+							<downloadJavadocs>false</downloadJavadocs>
+						</configuration>
+					</plugin>			
+				</plugins>
+			</build>
+		</profile>	
+		
+		<profile>
+			<id>openshift</id>				
+		</profile>	
+		<profile>
+			<id>arq-wildfly-remote</id>				
+		</profile>	
+		<profile>
+			<id>arq-wildfly-managed</id>				
+		</profile>
+	</profiles>
 </project>

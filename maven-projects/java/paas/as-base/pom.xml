@@ -11,7 +11,7 @@
 	<groupId>br.com.cams7</groupId>
 	<artifactId>as-base</artifactId>
 	<packaging>jar</packaging>
-	
+
 	<name>AS - base</name>
 	<description></description>
 
@@ -59,17 +59,13 @@
 			<artifactId>jboss-jsf-api_2.2_spec</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<!--finalName>${project.artifactId}</finalName-->
-	</build>
 </project>
 
 

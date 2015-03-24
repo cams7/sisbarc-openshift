@@ -13,8 +13,4 @@
 	<packaging>apk</packaging>
 
 	<name>Acende Apaga LEDs - Android</name>
-
-	<build>
-		<!--finalName>${project.artifactId}-${project.version}</finalName-->
-	</build>
 </project>

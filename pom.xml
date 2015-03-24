@@ -3,11 +3,11 @@
   	<modelVersion>4.0.0</modelVersion>
 
   	<groupId>br.com.cams7</groupId>
-	<artifactId>apps</artifactId>
+	<artifactId>app</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
-	<name>Aplicacoes (CAMs7)</name>
+	<name>Aplicacao (CAMs7)</name>
 	<description></description>
 	
 	<url>https://github.com/cams7/sisbarc-openshift</url>
@@ -87,24 +87,6 @@
 	</build>
 		
 	<profiles>
-		<profile>
-			<id>openshift</id>
-			<build>			
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-ear-plugin</artifactId>
-							<version>${version.ear.plugin}</version>
-							<configuration>
-								<outputDirectory>deployments</outputDirectory>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-		
 		<profile>			
 			<id>default</id>
 			<activation>
@@ -131,16 +113,38 @@
 		</profile>
 		
 		<profile>
-			<id>arq-wildfly-managed</id>
-			<dependencies>
-				<dependency>
-					<groupId>org.wildfly</groupId>
-					<artifactId>wildfly-arquillian-container-managed</artifactId>
-					<version>${version.arquillian.container}</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
+			<id>openshift</id>
+			<build>			
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-ear-plugin</artifactId>
+							<version>${version.ear.plugin}</version>
+							<configuration>
+								<outputDirectory>deployments</outputDirectory>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+					
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<configuration>
+							<skip>true</skip>
+						</configuration>						
+					</plugin>
+				</plugins>
+			</build>
+		</profile>	
 
 		<profile>			
 			<id>arq-wildfly-remote</id>
@@ -152,6 +156,18 @@
 					<scope>test</scope>
 				</dependency>
 			</dependencies>
-		</profile>
+		</profile>	
+		
+		<profile>
+			<id>arq-wildfly-managed</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly</groupId>
+					<artifactId>wildfly-arquillian-container-managed</artifactId>
+					<version>${version.arquillian.container}</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>		
 	</profiles>
 </project>

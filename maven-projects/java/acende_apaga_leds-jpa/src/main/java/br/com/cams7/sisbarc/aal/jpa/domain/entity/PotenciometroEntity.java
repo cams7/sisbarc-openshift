@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.cams7.sisbarc.aal.jpa.domain.Pin;
-import br.com.cams7.sisbarc.arduino.vo.ArduinoPin.ArduinoPinType;
+import br.com.cams7.arduino.ArduinoPinType;
 
 /**
  * @author cams7

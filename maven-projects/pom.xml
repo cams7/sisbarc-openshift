@@ -4,7 +4,7 @@
 	
 	<parent>
 		<groupId>br.com.cams7</groupId>
-		<artifactId>apps</artifactId>
+		<artifactId>app</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
@@ -16,38 +16,30 @@
 	
 	<properties>			
 	</properties>
+	
+	<modules>
+		<module>java</module>		
+	</modules>
 
-	<profiles>		
-		<profile>
-			<id>openshift</id>	
-			<modules>
-				<module>java</module>		
-			</modules>
-		</profile>
-		
+	<profiles>
 		<profile>
 			<id>default</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>			
 			<modules>
-				<module>java</module>
 				<module>mobile</module>
 			</modules>
+		</profile>
+		
+		<profile>
+			<id>openshift</id>				
 		</profile>	
-		
 		<profile>
-			<id>arq-wildfly-managed</id>	
-			<modules>
-				<module>java</module>		
-			</modules>
-		</profile>
-		
+			<id>arq-wildfly-remote</id>				
+		</profile>	
 		<profile>
-			<id>arq-wildfly-remote</id>	
-			<modules>
-				<module>java</module>		
-			</modules>
-		</profile>
+			<id>arq-wildfly-managed</id>				
+		</profile>			
 	</profiles>
 </project>
