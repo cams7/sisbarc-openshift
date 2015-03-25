@@ -18,12 +18,17 @@ package org.jboss.as.quickstarts.ear.ejb;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.xml.namespace.QName;
+import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
+import javax.xml.ws.handler.MessageContext;
 
-import com.javacodegeeks.enterprise.ws.WebServiceImplService;
 import com.javacodegeeks.enterprise.ws.WebServiceInterface;
 
 /**
@@ -42,40 +47,91 @@ public class GreeterEJB {
 	 */
 	public String sayHello(String name) {
 
-		WebServiceInterface serviceInterface = null;
-		QName qname = new QName("http://ws.enterprise.javacodegeeks.com/",
-				"WebServiceImplService");
+		// WebServiceInterface port = null;
 
 		switch (name.toLowerCase()) {
 		case "vaio":
-			try {
-				URL wsdlUrl = new URL(
-						"http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl");
-				Service service = Service.create(wsdlUrl, qname);
-				serviceInterface = service.getPort(WebServiceInterface.class);
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
+			// QName qname = new
+			// QName("http://ws.enterprise.javacodegeeks.com/",
+			// "WebServiceImplService");
+			// try {
+			// URL wsdlUrl = new URL(
+			// "http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl");
+			// Service service = Service.create(wsdlUrl, qname);
+			// serviceInterface = service.getPort(WebServiceInterface.class);
+			// } catch (MalformedURLException e) {
+			// e.printStackTrace();
+			// }
+
+			// ((BindingProvider) port).getRequestContext().put(
+			// BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
+			// "http://192.168.1.7:8181/acende_apaga_leds/sayhello");
+
+			// try {
+			// WebServiceImplService service = new WebServiceImplService(
+			// new URL(
+			// "http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl"),
+			// new QName("http://ws.enterprise.javacodegeeks.com/",
+			// "WebServiceImplService"));
+			// port = service.getWebServiceImplPort();
+			// } catch (MalformedURLException e) {
+			// e.printStackTrace();
+			// }
 			break;
 		case "vbox":
-			try {
-				URL wsdlUrl = new URL(
-						"http://192.168.1.8:8181/acende_apaga_leds/sayhello?wsdl");
-				Service service = Service.create(wsdlUrl, qname);
-				serviceInterface = service.getPort(WebServiceInterface.class);
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			}
+			// ((BindingProvider) port).getRequestContext().put(
+			// BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
+			// "http://192.168.1.5:8181/acende_apaga_leds/sayhello");
+			// try {
+			// WebServiceImplService service = new WebServiceImplService(
+			// new URL(
+			// "http://192.168.1.5:8181/acende_apaga_leds/sayhello?wsdl"),
+			// new QName("http://ws.enterprise.javacodegeeks.com/",
+			// "WebServiceImplService"));
+			// port = service.getWebServiceImplPort();
+			// } catch (MalformedURLException e) {
+			// e.printStackTrace();
+			// }
 			break;
 		default:
-			serviceInterface = (new WebServiceImplService())
-					.getWebServiceImplPort();
+			// port = (new WebServiceImplService()).getWebServiceImplPort();
 			break;
 		}
 
-		if (serviceInterface == null)
-			return null;
+		// if (port == null)
+		// return null;
 
-		return serviceInterface.printMessage(name);
+		// String message = port.printMessage(name);
+		// return message;
+
+		final String WS_URL = "http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl";
+
+		try {
+			URL url = new URL(WS_URL);
+			QName qname = new QName("http://ws.enterprise.javacodegeeks.com/",
+					"WebServiceImplService");
+			Service service = Service.create(url, qname);
+			WebServiceInterface port = service
+					.getPort(WebServiceInterface.class);
+
+			/******************* UserName & Password ******************************/
+			Map<String, Object> req_ctx = ((BindingProvider) port)
+					.getRequestContext();
+			req_ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, WS_URL);
+
+			Map<String, List<String>> headers = new HashMap<String, List<String>>();
+			headers.put("username",
+					Collections.singletonList("ceanma@gmail.com"));
+			headers.put("password", Collections.singletonList("abc@12345"));
+			req_ctx.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+			/**********************************************************************/
+
+			String message = port.printMessage(name);
+			return message;
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 }
