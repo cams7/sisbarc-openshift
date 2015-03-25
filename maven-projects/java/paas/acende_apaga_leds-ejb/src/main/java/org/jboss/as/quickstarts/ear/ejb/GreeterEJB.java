@@ -16,19 +16,16 @@
  */
 package org.jboss.as.quickstarts.ear.ejb;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
-import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
 
+import com.javacodegeeks.enterprise.ws.WebServiceImplService;
 import com.javacodegeeks.enterprise.ws.WebServiceInterface;
 
 /**
@@ -46,92 +43,24 @@ public class GreeterEJB {
 	 * @return the personalised greeting.
 	 */
 	public String sayHello(String name) {
+		WebServiceInterface port = (new WebServiceImplService())
+				.getWebServiceImplPort();
 
-		// WebServiceInterface port = null;
+		Map<String, Object> context = ((BindingProvider) port)
+				.getRequestContext();
+		if ("vbox".equalsIgnoreCase(name))
+			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
+					"http://192.168.1.5:8181/acende_apaga_leds/sayhello");
+		else if ("vaio".equalsIgnoreCase(name))
+			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
+					"http://192.168.1.7:8181/acende_apaga_leds/sayhello");
 
-		switch (name.toLowerCase()) {
-		case "vaio":
-			// QName qname = new
-			// QName("http://ws.enterprise.javacodegeeks.com/",
-			// "WebServiceImplService");
-			// try {
-			// URL wsdlUrl = new URL(
-			// "http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl");
-			// Service service = Service.create(wsdlUrl, qname);
-			// serviceInterface = service.getPort(WebServiceInterface.class);
-			// } catch (MalformedURLException e) {
-			// e.printStackTrace();
-			// }
+		Map<String, List<String>> headers = new HashMap<String, List<String>>();
+		headers.put("username", Collections.singletonList("ceanma@gmail.com"));
+		headers.put("password", Collections.singletonList("abc@12345"));
+		context.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
 
-			// ((BindingProvider) port).getRequestContext().put(
-			// BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-			// "http://192.168.1.7:8181/acende_apaga_leds/sayhello");
-
-			// try {
-			// WebServiceImplService service = new WebServiceImplService(
-			// new URL(
-			// "http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl"),
-			// new QName("http://ws.enterprise.javacodegeeks.com/",
-			// "WebServiceImplService"));
-			// port = service.getWebServiceImplPort();
-			// } catch (MalformedURLException e) {
-			// e.printStackTrace();
-			// }
-			break;
-		case "vbox":
-			// ((BindingProvider) port).getRequestContext().put(
-			// BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-			// "http://192.168.1.5:8181/acende_apaga_leds/sayhello");
-			// try {
-			// WebServiceImplService service = new WebServiceImplService(
-			// new URL(
-			// "http://192.168.1.5:8181/acende_apaga_leds/sayhello?wsdl"),
-			// new QName("http://ws.enterprise.javacodegeeks.com/",
-			// "WebServiceImplService"));
-			// port = service.getWebServiceImplPort();
-			// } catch (MalformedURLException e) {
-			// e.printStackTrace();
-			// }
-			break;
-		default:
-			// port = (new WebServiceImplService()).getWebServiceImplPort();
-			break;
-		}
-
-		// if (port == null)
-		// return null;
-
-		// String message = port.printMessage(name);
-		// return message;
-
-		final String WS_URL = "http://192.168.1.7:8181/acende_apaga_leds/sayhello?wsdl";
-
-		try {
-			URL url = new URL(WS_URL);
-			QName qname = new QName("http://ws.enterprise.javacodegeeks.com/",
-					"WebServiceImplService");
-			Service service = Service.create(url, qname);
-			WebServiceInterface port = service
-					.getPort(WebServiceInterface.class);
-
-			/******************* UserName & Password ******************************/
-			Map<String, Object> req_ctx = ((BindingProvider) port)
-					.getRequestContext();
-			req_ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, WS_URL);
-
-			Map<String, List<String>> headers = new HashMap<String, List<String>>();
-			headers.put("username",
-					Collections.singletonList("ceanma@gmail.com"));
-			headers.put("password", Collections.singletonList("abc@12345"));
-			req_ctx.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
-			/**********************************************************************/
-
-			String message = port.printMessage(name);
-			return message;
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-
-		return null;
+		String message = port.printMessage(name);
+		return message;
 	}
 }

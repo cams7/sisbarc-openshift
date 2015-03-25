@@ -94,15 +94,12 @@
 						<configuration>
 							<wsdlUrls>
 								<wsdlLocation>http://localhost:8181/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
-							</wsdlUrls>
-							<!-- packageName></packageName -->
-							<staleFile>${project.build.directory}/jaxws/stale/sayhello.stale</staleFile>
+							</wsdlUrls>							
 						</configuration>
 						<id>wsimport-generate-sayhello</id>
 						<phase>generate-sources</phase>
 					</execution>
 				</executions>
-
 				<dependencies>
 					<dependency>
 						<groupId>javax.xml</groupId>
@@ -110,7 +107,6 @@
 						<version>2.0</version>
 					</dependency>
 				</dependencies>
-
 				<configuration>
 					<sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
 					<xnocompile>true</xnocompile>

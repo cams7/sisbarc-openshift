@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-
 import java.util.List;
 import java.util.Map;
 
@@ -17,30 +16,25 @@ import javax.xml.ws.handler.MessageContext;
 public class WebServiceImpl implements WebServiceInterface {
 
 	@Resource
-	WebServiceContext wsctx;
+	private WebServiceContext serviceContext;
 
 	@Override
 	public String printMessage(String message) {
-
-		MessageContext mctx = wsctx.getMessageContext();
+		MessageContext messageContext = serviceContext.getMessageContext();
 
 		// get detail from request headers
-		Map http_headers = (Map) mctx.get(MessageContext.HTTP_REQUEST_HEADERS);
-		List userList = (List) http_headers.get("username");
-		List passList = (List) http_headers.get("password");
+		@SuppressWarnings("unchecked")
+		Map<String, List<String>> headers = (Map<String, List<String>>) messageContext
+				.get(MessageContext.HTTP_REQUEST_HEADERS);
+		List<String> userList = headers.get("username");
+		List<String> passList = headers.get("password");
 
-		String username = "";
-		String password = "";
+		String username = userList != null ? userList.get(0) : null;
+		String password = passList != null ? passList.get(0) : null;
 
-		if (userList != null)
-			username = userList.get(0).toString();
-
-		if (passList != null)
-			password = passList.get(0).toString();
-
-		String address = "";
-		String computerName = "";
-		String mac = "";
+		String address = null;
+		String computerName = null;
+		String mac = null;
 
 		try {
 			InetAddress localHost = InetAddress.getLocalHost();
