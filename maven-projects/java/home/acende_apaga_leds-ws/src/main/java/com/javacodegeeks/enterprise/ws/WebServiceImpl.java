@@ -34,7 +34,6 @@ public class WebServiceImpl implements WebServiceInterface {
 
 		String address = null;
 		String computerName = null;
-		String mac = null;
 
 		try {
 			InetAddress localHost = InetAddress.getLocalHost();
@@ -42,26 +41,14 @@ public class WebServiceImpl implements WebServiceInterface {
 			address = localHost.getHostAddress();
 			computerName = localHost.getHostName();
 
-			NetworkInterface network = NetworkInterface
-					.getByInetAddress(localHost);
-
-			byte[] array = network.getHardwareAddress();
-
-			StringBuilder sb = new StringBuilder();
-			for (int i = 0; i < array.length; i++)
-				sb.append(String.format("%02X%s", array[i],
-						(i < array.length - 1) ? "-" : ""));
-
-			mac = sb.toString();
-
-		} catch (UnknownHostException | SocketException e) {
+		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
 
 		return "Ola usuario '" + username + "', sua senha e '" + password
 				+ "' e voce envio a mensagem '" + message
 				+ "'. Esse servico foi chamado na maquina (" + computerName
-				+ ") de IP '" + address + "' e MAC '" + mac + "'";
+				+ ") de IP '" + address + "'";
 	}
 
 }
