@@ -97,10 +97,7 @@
 							</vmArgs>
 							<wsdlUrls>
 								<wsdlLocation>http://200.141.106.145:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
-							</wsdlUrls>	
-							<!--packageName></packageName>
-							<wsdlLocation>http://localhost:8181/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
-							<staleFile>${project.build.directory}/jaxws/stale/sayhello.stale</staleFile-->						
+							</wsdlUrls>													
 						</configuration>
 						<id>wsimport-generate-sayhello</id>
 						<phase>generate-sources</phase>
