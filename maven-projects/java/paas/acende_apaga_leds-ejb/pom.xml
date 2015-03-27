@@ -96,7 +96,7 @@
 							    <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
 							</vmArgs>
 							<wsdlUrls>
-								<wsdlLocation>http://cams7:abc%4012345@200.141.106.145:8081/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
+								<wsdlLocation>http://200.141.106.145:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
 							</wsdlUrls>	
 							<!--packageName></packageName>
 							<wsdlLocation>http://localhost:8181/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
