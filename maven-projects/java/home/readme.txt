@@ -26,6 +26,7 @@ Linux
 Tomcat 8:
 Altera a tag do arquivo 'server.xml', o arquivo esta localizado no diretorio 'conf' no tomcat8
 <Connector port="8181" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" address="0.0.0.0"/>
+<Connector port="8071" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" address="0.0.0.0" proxyHost="200.141.106.145" proxyPort="8080" />
 
 Incluir a tag no arquivo 'tomcat-users.xml', o arquivo esta localizado no diretorio 'conf' no tomcat8
 <user username="tomcat" password="tomcat" roles="tomcat,manager-gui,admin-gui,manager-script"/>
