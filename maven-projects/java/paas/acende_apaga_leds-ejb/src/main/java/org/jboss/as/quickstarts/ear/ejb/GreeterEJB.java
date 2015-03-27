@@ -50,14 +50,14 @@ public class GreeterEJB {
 				.getRequestContext();
 		if ("vbox".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://cams7:abc%4012345@200.141.106.145:8081/acende_apaga_leds/sayhello?wsdl");
+					"http://cams7:abc%4012345@200.141.106.145:8081/acende_apaga_leds/sayhello");
 		else if ("vaio".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.141.106.145:8080/acende_apaga_leds/sayhello?wsdl");
+					"http://200.141.106.145:8080/acende_apaga_leds/sayhello");
 
 		Map<String, List<String>> headers = new HashMap<String, List<String>>();
 		headers.put("username", Collections.singletonList("ceanma@gmail.com"));
-		headers.put("password", Collections.singletonList("abc@12345"));
+		headers.put("password", Collections.singletonList("teste@12345"));
 		context.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
 
 		String message = port.printMessage(name);
