@@ -16,14 +16,14 @@
  */
 package org.jboss.as.quickstarts.ear.ejb;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+//import java.util.Collections;
+//import java.util.HashMap;
+//import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.xml.ws.BindingProvider;
-import javax.xml.ws.handler.MessageContext;
+//import javax.xml.ws.handler.MessageContext;
 
 import com.javacodegeeks.enterprise.ws.WebServiceImplService;
 import com.javacodegeeks.enterprise.ws.WebServiceInterface;
@@ -55,10 +55,12 @@ public class GreeterEJB {
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
 					"http://200.141.106.145:8080/acende_apaga_leds/sayhello");
 
-		Map<String, List<String>> headers = new HashMap<String, List<String>>();
-		headers.put("username", Collections.singletonList("ceanma@gmail.com"));
-		headers.put("password", Collections.singletonList("teste@12345"));
-		context.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+		// Map<String, List<String>> headers = new HashMap<String,
+		// List<String>>();
+		// headers.put("username",
+		// Collections.singletonList("ceanma@gmail.com"));
+		// headers.put("password", Collections.singletonList("teste@12345"));
+		// context.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
 
 		String message = port.printMessage(name);
 		return message;

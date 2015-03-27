@@ -93,11 +93,11 @@
 						</goals>
 						<configuration>
 							<vmArgs>
-							    <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+								<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
 							</vmArgs>
 							<wsdlUrls>
 								<wsdlLocation>http://200.141.106.145:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
-							</wsdlUrls>													
+							</wsdlUrls>
 						</configuration>
 						<id>wsimport-generate-sayhello</id>
 						<phase>generate-sources</phase>
