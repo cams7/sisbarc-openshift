@@ -50,7 +50,7 @@ public class GreeterEJB {
 				.getRequestContext();
 		if ("vbox".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.141.106.145:8081/acende_apaga_leds/sayhello");
+					"http://cams7:abc%4012345@200.141.106.145:8081/acende_apaga_leds/sayhello");
 		else if ("vaio".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
 					"http://200.141.106.145:8080/acende_apaga_leds/sayhello");
