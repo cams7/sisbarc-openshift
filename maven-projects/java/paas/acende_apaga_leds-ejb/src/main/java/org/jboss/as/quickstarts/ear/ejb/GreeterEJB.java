@@ -49,12 +49,15 @@ public class GreeterEJB {
 
 		Map<String, Object> context = ((BindingProvider) port)
 				.getRequestContext();
-		if ("kercia".equalsIgnoreCase(name))
+		if ("leandro".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.141.158.102:8282/acende_apaga_leds/sayhello");
-		else if ("vaio".equalsIgnoreCase(name))
+					"http://200.141.188.221:8383/acende_apaga_leds/sayhello");
+		else if ("kercia".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.141.158.102:8080/acende_apaga_leds/sayhello");
+					"http://200.141.188.221:8282/acende_apaga_leds/sayhello");
+		else if ("cesar".equalsIgnoreCase(name))
+			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
+					"http://200.141.188.221:8080/acende_apaga_leds/sayhello");
 
 		Map<String, List<String>> headers = new HashMap<String, List<String>>();
 		headers.put("username", Collections.singletonList("ceanma@gmail.com"));
