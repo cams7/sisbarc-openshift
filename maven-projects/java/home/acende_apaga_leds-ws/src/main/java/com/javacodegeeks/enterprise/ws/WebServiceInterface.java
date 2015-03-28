@@ -6,8 +6,8 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 
 @WebService
-// @SOAPBinding(style = Style.RPC)
-@SOAPBinding(style = Style.DOCUMENT)
+@SOAPBinding(style = Style.RPC)
+//@SOAPBinding(style = Style.DOCUMENT)
 public interface WebServiceInterface {
 
 	@WebMethod

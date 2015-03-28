@@ -35,6 +35,7 @@ import com.javacodegeeks.enterprise.ws.WebServiceInterface;
  */
 @Stateless
 public class GreeterEJB {
+
 	/**
 	 * This method takes a name and returns a personalised greeting.
 	 * 
@@ -48,12 +49,12 @@ public class GreeterEJB {
 
 		Map<String, Object> context = ((BindingProvider) port)
 				.getRequestContext();
-		if ("vbox".equalsIgnoreCase(name))
+		if ("kercia".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.141.106.145:8081/acende_apaga_leds/sayhello");
+					"http://200.141.158.102:8282/acende_apaga_leds/sayhello");
 		else if ("vaio".equalsIgnoreCase(name))
 			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.141.106.145:8080/acende_apaga_leds/sayhello");
+					"http://200.141.158.102:8080/acende_apaga_leds/sayhello");
 
 		// Map<String, List<String>> headers = new HashMap<String,
 		// List<String>>();
