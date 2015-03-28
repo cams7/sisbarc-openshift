@@ -96,10 +96,10 @@
 								<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
 							</vmArgs>
 							<wsdlUrls>
-								<wsdlLocation>http://200.141.158.102:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
+								<wsdlLocation>http://200.149.64.107:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
 							</wsdlUrls>
-							<packageName></packageName> 
-							<wsdlLocation>http://200.141.188.221:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
+							<packageName></packageName>
+							<wsdlLocation>http://200.149.64.107:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
 							<staleFile>${project.build.directory}/jaxws/stale/sayhello.stale</staleFile>
 						</configuration>
 						<id>wsimport-generate-sayhello</id>
