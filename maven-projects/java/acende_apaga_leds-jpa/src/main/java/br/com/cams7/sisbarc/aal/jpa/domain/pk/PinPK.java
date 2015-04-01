@@ -10,6 +10,9 @@ import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
 import br.com.cams7.arduino.ArduinoPinType;
 
@@ -17,6 +20,8 @@ import br.com.cams7.arduino.ArduinoPinType;
  * @author cams7
  *
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "pinPK", propOrder = { "pinType", "pin" })
 @Embeddable
 public class PinPK implements Serializable {
 

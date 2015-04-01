@@ -82,44 +82,24 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.jvnet.jax-ws-commons</groupId>
-				<artifactId>jaxws-maven-plugin</artifactId>
-				<version>2.3</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>wsimport</goal>
-						</goals>
-						<configuration>
-							<vmArgs>
-								<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-							</vmArgs>
-							<wsdlUrls>
-								<wsdlLocation>http://200.149.64.107:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
-							</wsdlUrls>
-							<packageName></packageName>
-							<wsdlLocation>http://200.149.64.107:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation>
-							<staleFile>${project.build.directory}/jaxws/stale/sayhello.stale</staleFile>
-						</configuration>
-						<id>wsimport-generate-sayhello</id>
-						<phase>generate-sources</phase>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>javax.xml</groupId>
-						<artifactId>webservices-api</artifactId>
-						<version>2.0</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
-					<xnocompile>true</xnocompile>
-					<verbose>true</verbose>
-					<extension>true</extension>
-				</configuration>
-			</plugin>
+			<!-- plugin> <groupId>org.jvnet.jax-ws-commons</groupId> <artifactId>jaxws-maven-plugin</artifactId> 
+				<version>2.3</version> <executions> <execution> <goals> <goal>wsimport</goal> 
+				</goals> <configuration> <vmArgs> <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg> 
+				</vmArgs> <wsdlUrls> <wsdlLocation>http://192.168.1.50:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation> 
+				</wsdlUrls> <packageName></packageName> <wsdlLocation>http://192.168.1.50:8080/acende_apaga_leds/sayhello?wsdl</wsdlLocation> 
+				<staleFile>${project.build.directory}/jaxws/stale/sayhello.stale</staleFile> 
+				</configuration> <id>wsimport-generate-sayhello</id> <phase>generate-sources</phase> 
+				</execution> <execution> <goals> <goal>wsimport</goal> </goals> <configuration> 
+				<vmArgs> <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg> </vmArgs> <wsdlUrls> 
+				<wsdlLocation>http://192.168.1.50:8080/acende_apaga_leds/aal_monitor?wsdl</wsdlLocation> 
+				</wsdlUrls> <packageName></packageName> <wsdlLocation>http://192.168.1.50:8080/acende_apaga_leds/aal_monitor?wsdl</wsdlLocation> 
+				<staleFile>${project.build.directory}/jaxws/stale/aal_monitor.stale</staleFile> 
+				</configuration> <id>wsimport-generate-aal_monitor</id> <phase>generate-sources</phase> 
+				</execution> </executions> <dependencies> <dependency> <groupId>javax.xml</groupId> 
+				<artifactId>webservices-api</artifactId> <version>2.0</version> </dependency> 
+				</dependencies> <configuration> <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir> 
+				<xnocompile>true</xnocompile> <verbose>true</verbose> <extension>true</extension> 
+				</configuration> </plugin -->
 		</plugins>
 	</build>
 </project>

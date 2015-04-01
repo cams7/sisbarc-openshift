@@ -5,27 +5,28 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ul class="nav nav-list" style="padding-top: 15px;">
-		<li><em><h:outputText value="#{msg['label.mercadorias']}" /></em></li>
+		<li
+			class="#{empty param.active || param.active == 'lista_leds' ? 'active' : ''}">
+			<h:link outcome="led_list">
+				<h:outputText value="#{msg['menu.led.list']}" escape="false" />
+				<f:param name="active" value="lista_leds" />
+			</h:link>
+		</li>
+		<li
+			class="#{empty param.active || param.active == 'lista_potenciometros' ? 'active' : ''}">
+			<h:link outcome="potenciometro_list">
+				<h:outputText value="#{msg['menu.potentiometer.list']}"
+					escape="false" />
+				<f:param name="active" value="lista_potenciometros" />
+			</h:link>
+		</li>
 
-		<li class="#{empty param.active || param.active == 'lista' ? 'active' : ''}">
-			<h:link outcome="listaMercadorias">
-				<h:outputText value="#{msg['menu.lista']}" escape="false" />
-				<f:param name="active" value="lista" />
-            </h:link>
-		</li>
-		<li class="#{param.active == 'incluir' ? 'active' : ''}">
-			<h:link outcome="incluirMercadoria">
-				<h:outputText value="#{msg['menu.incluir']}" escape="false" />
-				<f:param name="active" value="incluir" />
-			</h:link>
-		</li>
 		<li class="divider"></li>
-		<li class="#{param.active == 'sobre' ? 'active' : ''}">
-			<h:link outcome="sobre">
-				<h:outputText value="#{msg['menu.sobre']}" escape="false" />
+		<li class="#{param.active == 'sobre' ? 'active' : ''}"><h:link
+				outcome="about">
+				<h:outputText value="#{msg['menu.about']}" escape="false" />
 				<f:param name="active" value="sobre" />
-			</h:link>
-		</li>
+			</h:link></li>
 	</ul>
 
 </ui:fragment>

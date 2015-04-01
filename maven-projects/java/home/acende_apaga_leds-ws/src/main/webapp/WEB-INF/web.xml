@@ -17,7 +17,47 @@
 		<servlet-name>sayhello</servlet-name>
 		<url-pattern>/sayhello</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>aal_monitor</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aal_monitor</servlet-name>
+		<url-pattern>/aal_monitor</url-pattern>
+	</servlet-mapping>
+	
+	
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
+
+	<context-param>
+		<param-name>SERIAL_PORT</param-name>
+		<param-value>COM3</param-value>
+	</context-param>
+	<context-param>
+		<param-name>SERIAL_BAUD_RATE</param-name>
+		<param-value>9600</param-value>
+	</context-param>
+	<context-param>
+		<!-- Serial verification in MILLISECOUNDS -->
+		<param-name>SERIAL_THREAD_TIME</param-name>
+		<param-value>500</param-value>
+	</context-param>
+
+	<!-- Example journaldev -->
+	<context-param>
+		<param-name>DBUSER</param-name>
+		<param-value>sisbarc</param-value>
+	</context-param>
+	<context-param>
+		<param-name>DBPWD</param-name>
+		<param-value>sisbarc</param-value>
+	</context-param>
+	<context-param>
+		<param-name>DBURL</param-name>
+		<param-value>jdbc:postgresql://192.168.1.51:5432/sisbarc</param-value>
+	</context-param>
 </web-app>

@@ -12,16 +12,22 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlType;
 
-import br.com.cams7.sisbarc.aal.jpa.domain.Pin;
 import br.com.cams7.arduino.ArduinoPinType;
+import br.com.cams7.sisbarc.aal.jpa.domain.Pin;
+import br.com.cams7.sisbarc.aal.jpa.domain.pk.PinPK;
 
 /**
  * @author cams7
  *
  */
-@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ledEntity", propOrder = { "cor", "ativo", "ativadoPorBotao",
+		"estado" })
 @Entity
 @Table(name = "led")
 @NamedQueries({
@@ -47,6 +53,10 @@ public class LEDEntity extends Pin {
 
 	public LEDEntity() {
 		super();
+	}
+
+	public LEDEntity(PinPK pin) {
+		super(pin);
 	}
 
 	public LEDEntity(ArduinoPinType pinType, Short pin) {
@@ -85,15 +95,35 @@ public class LEDEntity extends Pin {
 		this.estado = estado;
 	}
 
+	@XmlType(name = "corLED")
+	@XmlEnum
 	public enum CorLED {
 		AMARELO, // LED Amarela
 		VERDE, // LED Verde
 		VERMELHO; // LED Vermelha
+
+		public String value() {
+			return name();
+		}
+
+		public static CorLED fromValue(String value) {
+			return valueOf(value);
+		}
 	}
 
+	@XmlType(name = "estadoLED")
+	@XmlEnum
 	public enum EstadoLED {
 		ACESO, // Acende
 		APAGADO;// Apaga
+
+		public String value() {
+			return name();
+		}
+
+		public static EstadoLED fromValue(String value) {
+			return valueOf(value);
+		}
 	}
 
 }

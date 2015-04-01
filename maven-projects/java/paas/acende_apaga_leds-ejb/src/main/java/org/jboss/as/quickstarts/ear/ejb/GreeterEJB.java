@@ -25,8 +25,8 @@ import javax.ejb.Stateless;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.handler.MessageContext;
 
-import com.javacodegeeks.enterprise.ws.WebServiceImplService;
-import com.javacodegeeks.enterprise.ws.WebServiceInterface;
+import org.jboss.as.quickstarts.ear.ws.HelloService;
+import org.jboss.as.quickstarts.ear.ws.HelloServiceImplService;
 
 /**
  * A simple Hello World EJB. The EJB does not use an interface.
@@ -35,6 +35,7 @@ import com.javacodegeeks.enterprise.ws.WebServiceInterface;
  */
 @Stateless
 public class GreeterEJB {
+	private final String IP = "200.141.36.149";
 
 	/**
 	 * This method takes a name and returns a personalised greeting.
@@ -44,20 +45,32 @@ public class GreeterEJB {
 	 * @return the personalised greeting.
 	 */
 	public String sayHello(String name) {
-		WebServiceInterface port = (new WebServiceImplService())
-				.getWebServiceImplPort();
+		HelloService port = (new HelloServiceImplService())
+				.getHelloServiceImplPort();
 
 		Map<String, Object> context = ((BindingProvider) port)
 				.getRequestContext();
-		if ("leandro".equalsIgnoreCase(name))
-			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.149.64.107:8383/acende_apaga_leds/sayhello");
-		else if ("kercia".equalsIgnoreCase(name))
-			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.149.64.107:8282/acende_apaga_leds/sayhello");
-		else if ("cesar".equalsIgnoreCase(name))
-			context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-					"http://200.149.64.107:8080/acende_apaga_leds/sayhello");
+
+		String appPort = "8080";
+
+		switch (name.toLowerCase()) {
+		case "leandro":
+			appPort = "8383";
+			break;
+		case "kercia":
+			appPort = "8282";
+			break;
+		case "vbox":
+			appPort = "8081";
+			break;
+		default:
+			break;
+		}
+
+		String path = "http://" + IP + ":" + appPort
+				+ "/acende_apaga_leds/sayhello";
+
+		context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, path);
 
 		Map<String, List<String>> headers = new HashMap<String, List<String>>();
 		headers.put("username", Collections.singletonList("ceanma@gmail.com"));

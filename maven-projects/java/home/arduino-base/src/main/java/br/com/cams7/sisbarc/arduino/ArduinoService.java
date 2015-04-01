@@ -28,4 +28,10 @@ public interface ArduinoService {
 	 * @return
 	 */
 	public long getSerialThreadTime();
+
+	public void init() throws ArduinoException;
+
+	public void close() throws ArduinoException;
+
+	public boolean isInitialized();
 }

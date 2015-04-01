@@ -6,13 +6,23 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
 
-import br.com.cams7.jpa.domain.BaseEntity;
-import br.com.cams7.sisbarc.aal.jpa.domain.pk.PinPK;
 import br.com.cams7.arduino.ArduinoPinType;
+import br.com.cams7.jpa.domain.BaseEntity;
+import br.com.cams7.sisbarc.aal.jpa.domain.entity.LEDEntity;
+import br.com.cams7.sisbarc.aal.jpa.domain.pk.PinPK;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "pin", propOrder = { "id", "evento", "alteraEvento",
+		"intervalo", "alteraIntervalo" })
+@XmlSeeAlso({ LEDEntity.class })
 @MappedSuperclass
-public abstract class Pin extends BaseEntity<PinPK> {
+public/* abstract */class Pin extends BaseEntity<PinPK> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,13 +49,18 @@ public abstract class Pin extends BaseEntity<PinPK> {
 		super();
 	}
 
+	public Pin(PinPK pin) {
+		super(pin);
+	}
+
 	public Pin(ArduinoPinType pinType, Short pin) {
-		super(new PinPK(pinType, pin));
+		this(new PinPK(pinType, pin));
 	}
 
 	/**
 	 * @return the id
 	 */
+	// @XmlJavaTypeAdapter(PinIDAdapter.class)
 	public PinPK getId() {
 		return id;
 	}
@@ -118,13 +133,25 @@ public abstract class Pin extends BaseEntity<PinPK> {
 		this.alteraIntervalo = alteraIntervalo;
 	}
 
+	@XmlType(name = "evento")
+	@XmlEnum
 	public enum Evento {
 		ACENDE_APAGA, // Acende ou apaga
 		PISCA_PISCA, // Pisca-pisca
 		FADE, // Acende ao poucos
 		NENHUM; // Não faz nada
+
+		public String value() {
+			return name();
+		}
+
+		public static Evento fromValue(String value) {
+			return valueOf(value);
+		}
 	}
 
+	@XmlType(name = "intervalo")
+	@XmlEnum
 	public enum Intervalo {
 		INTERVALO_10MILISEGUNDOS, // 1/100 de segundo
 		INTERVALO_50MILISEGUNDOS, // 1/20 de segundo
@@ -134,6 +161,14 @@ public abstract class Pin extends BaseEntity<PinPK> {
 		INTERVALO_5SEGUNDOS, // 5 segundos
 		INTERVALO_10SEGUNDOS, // 10 segundos
 		SEM_INTERVALO; // O evento sera apenas executado quando for chamado
+
+		public String value() {
+			return name();
+		}
+
+		public static Intervalo fromValue(String value) {
+			return valueOf(value);
+		}
 	}
 
 }

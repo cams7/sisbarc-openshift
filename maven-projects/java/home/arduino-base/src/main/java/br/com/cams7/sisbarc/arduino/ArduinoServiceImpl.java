@@ -47,6 +47,8 @@ public abstract class ArduinoServiceImpl implements ArduinoService, Runnable,
 
 	private Map<String, Arduino> currentStatus;
 
+	private boolean initialized;
+
 	/**
 	 * Construtor da classe Arduino
 	 * 
@@ -71,13 +73,12 @@ public abstract class ArduinoServiceImpl implements ArduinoService, Runnable,
 
 		log = Logger.getLogger(this.getClass().getName());
 
-		init();
 	}
 
 	/**
 	 * Metodo que verifica se a comunicacao com a porta serial esta OK
 	 */
-	private void init() throws ArduinoException {
+	public void init() throws ArduinoException {
 		// close();
 
 		// Define uma variavel portId do tipo CommPortIdentifier para
@@ -112,6 +113,7 @@ public abstract class ArduinoServiceImpl implements ArduinoService, Runnable,
 
 			Thread readThread = new Thread(this);
 			readThread.start();
+			initialized = true;
 		} catch (PortInUseException | IOException | TooManyListenersException
 				| UnsupportedCommOperationException e) {
 			throw new ArduinoException("Erro na comunicacao serial",
@@ -125,7 +127,7 @@ public abstract class ArduinoServiceImpl implements ArduinoService, Runnable,
 	/**
 	 * M�todo que fecha a comunica��o com a porta serial
 	 */
-	private void close() throws ArduinoException {
+	public void close() throws ArduinoException {
 		ArduinoException exception = new ArduinoException(
 				"Nao foi possivel fechar a porta '" + serialPort + "'");
 		try {
@@ -524,6 +526,10 @@ public abstract class ArduinoServiceImpl implements ArduinoService, Runnable,
 
 	public long getSerialThreadTime() {
 		return serialThreadTime;
+	}
+
+	public boolean isInitialized() {
+		return initialized;
 	}
 
 	protected Map<String, Arduino> getCurrentStatus() {

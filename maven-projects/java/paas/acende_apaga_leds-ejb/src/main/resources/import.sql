@@ -8,6 +8,8 @@ insert into LED (TIPO_PINO, PINO_ARDUINO, COR_LED, LED_ATIVO, ATIVADO_POR_BOTAO,
 
 insert into POTENCIOMETRO (TIPO_PINO, PINO_ARDUINO, EVENTO, ALTERA_EVENTO, EVENTO_INTERVALO, ALTERA_INTERVALO) values (1, 0, 3, true, 3, true);
 
+insert into USUARIO (ID_USUARIO, NOME_USUARIO, DATA_CADASTRO, USUARIO_ATIVO, MONITOR_URL) values (nextval('usuario_seq'), 'Cesar Magalhaes', '2015-04-01 16:16:40.50', true, '192.168.1.50:8080');
+
 insert into PAIS(ID_PAIS, NOME_PAIS, CONTINENTE) values(nextval('pais_seq'), 'Alemanha',    4);
 insert into PAIS(ID_PAIS, NOME_PAIS, CONTINENTE) values(nextval('pais_seq'), 'Suécia',      4);
 insert into PAIS(ID_PAIS, NOME_PAIS, CONTINENTE) values(nextval('pais_seq'), 'França',      4);

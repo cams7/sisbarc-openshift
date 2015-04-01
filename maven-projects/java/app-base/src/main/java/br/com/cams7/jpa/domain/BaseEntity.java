@@ -5,11 +5,18 @@ package br.com.cams7.jpa.domain;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * @author cams7
  *
  * @param <PK>
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "baseEntity")
 public abstract class BaseEntity<PK extends Serializable> implements
 		Serializable {
 	private static final long serialVersionUID = 1L;
@@ -30,6 +37,8 @@ public abstract class BaseEntity<PK extends Serializable> implements
 		setId(id);
 	}
 
+	@XmlTransient
+	// @XmlJavaTypeAdapter(SerializableAdapter.class)
 	public abstract PK getId();
 
 	public abstract void setId(PK id);

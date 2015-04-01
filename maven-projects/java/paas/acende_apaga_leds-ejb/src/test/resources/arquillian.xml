@@ -32,6 +32,10 @@
         <!-- By default, arquillian will use the JBOSS_HOME environment variable.  Alternatively, the configuration below can be uncommented. -->
         <configuration>
         	<property name="jbossHome">C:/Users/cams7/desenv/java/jboss/wildfly-8.2.0.Final_maven</property>
+        	<property name="serverConfig">standalone.xml</property>
+        	<property name="outputToConsole">true</property>
+        	<property name="javaVmArguments">-Djboss.socket.binding.port-offset=100</property>
+        	<property name="managementPort">10090</property>
         </configuration>
     </container>
 </arquillian>
