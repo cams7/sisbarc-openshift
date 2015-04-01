@@ -57,9 +57,9 @@ public class GreeterEJB {
 		case "leandro":
 			appPort = "8383";
 			break;
-		case "kercia":
-			appPort = "8282";
-			break;
+		// case "kercia":
+		// appPort = "8282";
+		// break;
 		case "vbox":
 			appPort = "8081";
 			break;
