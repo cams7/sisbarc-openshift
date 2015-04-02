@@ -68,6 +68,9 @@ public abstract class AALServiceImpl<E extends BaseEntity<ID>, ID extends Serial
 
 		final String WSDL_LOCATION = "http://" + url
 				+ "/acende_apaga_leds/aal_monitor";
+
+		getLog().info("WSDL: " + WSDL_LOCATION);
+
 		context.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, WSDL_LOCATION);
 
 		return monitor;
